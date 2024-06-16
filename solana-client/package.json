@@ -1,0 +1,12 @@
+{
+  "name": "solana-client",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@solana/web3.js": "^1.92.3"
+  },
+  "dependencies": {
+    "borsh": "^2.0.0"
+  }
+}
