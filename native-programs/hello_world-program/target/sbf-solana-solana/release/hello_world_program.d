@@ -1,0 +1,1 @@
+/Users/tarun/RustroverProjects/sol-examples/native-programs/hello_world-program/target/sbf-solana-solana/release/hello_world_program.so: /Users/tarun/RustroverProjects/sol-examples/native-programs/hello_world-program/src/lib.rs
