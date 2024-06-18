@@ -3,7 +3,7 @@ import {Transaction, TransactionInstruction, PublicKey, SystemProgram} from "@so
 import {Movie} from "../lib/Movie.ts";
 import {useState} from "react";
 
-const MOVIE_REVIEW_PROGRAM_ID = "5S3zdKYuVAAmpf9R7QkkAiBviWywzz9VHy14YR3CW8Xd";
+const MOVIE_REVIEW_PROGRAM_ID = "2DpDPNZp9Zc9iFrC4CVxN2qYeP57UcBdqDWpNvHgyQiZ";
 export const AddMovieReview = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -27,7 +27,7 @@ export const AddMovieReview = () => {
 
         const transaction = new Transaction();
 
-        const [pda] = PublicKey.findProgramAddressSync(
+        const [pda] = await PublicKey.findProgramAddressSync(
             [publicKey.toBuffer(), new TextEncoder().encode(movie.title)],
             new PublicKey(MOVIE_REVIEW_PROGRAM_ID)
         )
@@ -60,6 +60,7 @@ export const AddMovieReview = () => {
             const sig = await sendTransaction(transaction, connection);
             setSig(`https://explorer.solana.com/tx/${sig}?cluster=devnet`);
         } catch (e) {
+            console.log(JSON.stringify(e));
             alert(JSON.stringify(e));
         }
     }

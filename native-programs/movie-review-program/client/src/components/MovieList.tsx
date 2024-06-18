@@ -3,23 +3,30 @@ import {PublicKey} from "@solana/web3.js";
 import {useEffect, useState} from "react";
 import {Movie} from "../lib/Movie.ts";
 
-const MOVIE_REVIEW_PROGRAM_ID = "5S3zdKYuVAAmpf9R7QkkAiBviWywzz9VHy14YR3CW8Xd";
+const MOVIE_REVIEW_PROGRAM_ID = "2DpDPNZp9Zc9iFrC4CVxN2qYeP57UcBdqDWpNvHgyQiZ";
 export const MovieList = () => {
     const {connection} = useConnection();
-    const [movies, setMovies] = useState<Movie[] | null>([]);
+    const [movies, setMovies] = useState<Movie[]>([]);
+
+    // console.log('heelo')
 
     useEffect(() => {
-        connection.getProgramAccounts(new PublicKey(MOVIE_REVIEW_PROGRAM_ID)).then(async(accounts) => {
-            const movies:(Movie | null)[] = accounts.map(({account}) => {
-                console.log(account.data)
-                return Movie.deserialize(account.data);
+        connection.getProgramAccounts(new PublicKey(MOVIE_REVIEW_PROGRAM_ID))
+            .then(async (accounts) => {
+                console.log(accounts)
+                const movies: Movie[] = accounts.reduce((accum: Movie[], { pubkey, account }) => {
+                    const movie = Movie.deserialize(account.data)
+                    if (!movie) {
+                        return accum
+                    }
+
+                    console.log(`pubkey: ${pubkey} movie: ${movie}`)
+
+                    return [...accum, movie]
+                }, [])
+                setMovies(movies)
             })
-            if(!movies) return;
-            // @ts-ignore
-            setMovies(movies);
-            console.log(movies)
-        })
-    }, [])
+    }, [connection])
     return (
         <>
             {
