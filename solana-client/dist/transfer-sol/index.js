@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendSolana = void 0;
 const web3_js_1 = require("@solana/web3.js");
+const helpers_1 = require("@solana-developers/helpers");
 const sendSolana = (from, to, amount) => __awaiter(void 0, void 0, void 0, function* () {
     const connection = new web3_js_1.Connection((0, web3_js_1.clusterApiUrl)('devnet'));
     const transaction = new web3_js_1.Transaction();
@@ -26,8 +27,7 @@ const sendSolana = (from, to, amount) => __awaiter(void 0, void 0, void 0, funct
     console.log(signature);
 });
 exports.sendSolana = sendSolana;
-const secret = Uint8Array.from([221, 238, 125, 115, 182, 138, 144, 194, 103, 74, 93, 88, 231, 243, 169, 201, 228, 253, 68, 20, 238, 242, 180, 215, 90, 59, 246, 71, 10, 251, 235, 87, 173, 15, 33, 244, 237, 82, 221, 203, 48, 177, 141, 148, 194, 140, 28, 205, 39, 120, 125, 75, 229, 44, 159, 155, 202, 30, 231, 68, 199, 72, 68, 250]);
-const keyPair = web3_js_1.Keypair.fromSecretKey(secret);
+const keyPair = (0, helpers_1.getKeypairFromEnvironment)("SECRET_KEY");
 (() => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, exports.sendSolana)(keyPair, new web3_js_1.PublicKey("FdvRKFEgdqJeKXS8SdffMkbYKg2oKwDXfamciiinWXjN"), 1);
 }))();

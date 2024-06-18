@@ -7,6 +7,10 @@
     "@solana/web3.js": "^1.92.3"
   },
   "dependencies": {
-    "borsh": "^2.0.0"
+    "@metaplex-foundation/mpl-token-metadata": "2",
+    "@solana-developers/helpers": "^2.3.0",
+    "@solana/spl-token": "^0.4.6",
+    "borsh": "^2.0.0",
+    "dotenv": "^16.4.5"
   }
 }

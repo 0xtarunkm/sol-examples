@@ -28,7 +28,7 @@ export const AddMovieReview = () => {
         const transaction = new Transaction();
 
         const [pda] = PublicKey.findProgramAddressSync(
-            [publicKey.toBuffer(), Buffer.from(movie.title)],
+            [publicKey.toBuffer(), new TextEncoder().encode(movie.title)],
             new PublicKey(MOVIE_REVIEW_PROGRAM_ID)
         )
 
@@ -57,8 +57,8 @@ export const AddMovieReview = () => {
         transaction.add(instruction);
 
         try {
-        const sig = await sendTransaction(transaction, connection);
-        setSig(`https://explorer.solana.com/tx/${sig}?cluster=devnet`);
+            const sig = await sendTransaction(transaction, connection);
+            setSig(`https://explorer.solana.com/tx/${sig}?cluster=devnet`);
         } catch (e) {
             alert(JSON.stringify(e));
         }
