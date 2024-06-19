@@ -8,6 +8,7 @@ pub mod counter_program {
 
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
         let counter = &mut ctx.accounts.counter;
+        counter.count = 0;
         counter.bump = ctx.bumps.counter;
         msg!("Counter in initialized");
         msg!("Current value of counter is {}", counter.count);
@@ -17,14 +18,18 @@ pub mod counter_program {
 
     pub fn increment(ctx: Context<Update>) -> Result<()> {
         let counter = &mut ctx.accounts.counter;
+        msg!("Previous count: {}", counter.count);
         counter.count = counter.count.checked_add(1).unwrap();
+        msg!("Counter incremented");
         msg!("Current value of counter is {}", counter.count);
         Ok(())
     }
 
     pub fn decrement(ctx: Context<Update>) -> Result<()> {
         let counter = &mut ctx.accounts.counter;
+        msg!("Previous value of the counter: {}", counter.count);
         counter.count = counter.count.checked_sub(1).unwrap();
+        msg!("Counter decremented");
         msg!("Current value of counter is {}", counter.count);
         Ok(())
     }
