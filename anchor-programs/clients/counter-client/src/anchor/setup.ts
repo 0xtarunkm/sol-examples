@@ -3,7 +3,7 @@ import { IdlAccounts, Program } from '@coral-xyz/anchor';
 import type { CounterProgram } from './idlTypes';
 import idl from './Idl.json';
 
-const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+const connection = new Connection(clusterApiUrl('devnet'));
 
 export const program = new Program(idl as CounterProgram, {
   connection,
@@ -14,4 +14,4 @@ export const [counterPDA] = PublicKey.findProgramAddressSync(
   program.programId
 );
 
-export type CounterData = IdlAccounts<CounterProgram>['counterStruct'];
+export type CounterData = IdlAccounts<CounterProgram>['counter'];

@@ -1,5 +1,5 @@
 {
-  "address": "7E8ibwHZTGCkobE9DkRVYss9LksviexqomAbBkpBJ1qF",
+  "address": "4BnwJ3bBtRWU5yunMkW76qnVjwYFRrb2FRQT4zPKxcaj",
   "metadata": {
     "name": "counter_program",
     "version": "0.1.0",
@@ -84,13 +84,13 @@
   ],
   "accounts": [
     {
-      "name": "CounterStruct",
-      "discriminator": [246, 111, 218, 94, 73, 90, 69, 125]
+      "name": "Counter",
+      "discriminator": [255, 176, 4, 245, 188, 253, 124, 25]
     }
   ],
   "types": [
     {
-      "name": "CounterStruct",
+      "name": "Counter",
       "type": {
         "kind": "struct",
         "fields": [

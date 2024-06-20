@@ -4,10 +4,10 @@
 resolution = true
 skip-lint = false
 
-[programs.localnet]
-counter_program = "7E8ibwHZTGCkobE9DkRVYss9LksviexqomAbBkpBJ1qF"
-
 [programs.devnet]
+counter_program = "4BnwJ3bBtRWU5yunMkW76qnVjwYFRrb2FRQT4zPKxcaj"
+
+[programs.localnet]
 counter_program = "7E8ibwHZTGCkobE9DkRVYss9LksviexqomAbBkpBJ1qF"
 
 [registry]

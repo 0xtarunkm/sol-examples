@@ -22,7 +22,7 @@ describe("counter-program", () => {
         .initialize()
         .rpc()
 
-    const account = await program.account.counterStruct.fetch(counterPDA)
+    const account = await program.account.counter.fetch(counterPDA)
     expect(account.count.toNumber()).to.equal(0)
   })
 
@@ -31,7 +31,7 @@ describe("counter-program", () => {
         .increment()
         .rpc()
 
-    const account = await program.account.counterStruct.fetch(counterPDA)
+    const account = await program.account.counter.fetch(counterPDA)
     expect(account.count.toNumber()).to.equal(1)
   })
 
@@ -40,7 +40,7 @@ describe("counter-program", () => {
         .decrement()
         .rpc()
 
-    const account = await program.account.counterStruct.fetch(counterPDA)
+    const account = await program.account.counter.fetch(counterPDA)
     expect(account.count.toNumber()).to.equal(0)
   })
 })

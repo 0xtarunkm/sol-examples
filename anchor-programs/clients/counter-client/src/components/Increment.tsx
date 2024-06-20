@@ -11,7 +11,14 @@ export default function Increment() {
     }
 
     try {
-      const transaction = await program.methods.increment().transaction();
+      const transaction = await program.methods
+        .increment()
+        .accounts({
+          user: publicKey,
+        })
+        .transaction();
+
+      console.log(transaction);
 
       const transactionSignature = await sendTransaction(
         transaction,
