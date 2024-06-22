@@ -15,7 +15,7 @@ export default function Init() {
       counterPDA,
       (accountInfo) => {
         setCounterData(
-          program.coder.accounts.decode('counterStruct', accountInfo.data)
+          program.coder.accounts.decode('counter', accountInfo.data)
         );
       }
     );

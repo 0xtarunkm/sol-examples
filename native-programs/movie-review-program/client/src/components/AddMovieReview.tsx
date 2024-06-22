@@ -27,7 +27,7 @@ export const AddMovieReview = () => {
 
         const transaction = new Transaction();
 
-        const [pda] = await PublicKey.findProgramAddressSync(
+        const [pda] = PublicKey.findProgramAddressSync(
             [publicKey.toBuffer(), new TextEncoder().encode(movie.title)],
             new PublicKey(MOVIE_REVIEW_PROGRAM_ID)
         )

@@ -1,9 +1,11 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { program } from '../anchor/setup';
+import { useState } from 'react';
 
 export default function Increment() {
   const { publicKey, sendTransaction } = useWallet();
   const { connection } = useConnection();
+  const [sig, setSig] = useState<string>('');
 
   const onClick = async () => {
     if (!publicKey) {
@@ -25,7 +27,7 @@ export default function Increment() {
         connection
       );
 
-      console.log(
+      setSig(
         `https://explorer.solana.com/tx/${transactionSignature}?cluster=devnet`
       );
     } catch (error) {
@@ -35,6 +37,11 @@ export default function Increment() {
   return (
     <div>
       <button onClick={onClick}>increment</button>
+      <div>
+        <a href={sig} target="_blank" rel="noreferrer">
+          {sig}
+        </a>
+      </div>
     </div>
   );
 }

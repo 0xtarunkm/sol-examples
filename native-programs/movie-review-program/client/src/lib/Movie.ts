@@ -12,7 +12,8 @@ export class Movie {
     }
 
     borshInstructionSchema = borsh.struct([
-        borsh.bool('is_initialized'),
+        // borsh.bool('is_initialized'),
+        borsh.u8('variant'),
         borsh.str('title'),
         borsh.u8('rating'),
         borsh.str('description'),
